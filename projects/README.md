@@ -1,1 +1,4 @@
-The projects directory should contain your onid (e.g., aburasa) folder 
+Suzi O'Rourke
+This is my assignment-1
+submission!
+
