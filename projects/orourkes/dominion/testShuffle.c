@@ -1,4 +1,4 @@
-#include "dominion.h"
+#include "../Headers/dominion.h"
 #include <stdio.h>
 #include <assert.h>
 
@@ -16,12 +16,12 @@ int main () {
 
   if (G.deckCount[0] > 0) {
     assert (ret != -1);
-    
+
     qsort ((void*)(G.deck[0]), G.deckCount[0], sizeof(int), compare);
-    qsort ((void*)(G2.deck[0]), G2.deckCount[0], sizeof(int), compare);    
+    qsort ((void*)(G2.deck[0]), G2.deckCount[0], sizeof(int), compare);
   } else
     assert (ret == -1);
 
-  assert(memcmp(&G, &G2, sizeof(struct gameState)) == 0);  
+  assert(memcmp(&G, &G2, sizeof(struct gameState)) == 0);
 
 }

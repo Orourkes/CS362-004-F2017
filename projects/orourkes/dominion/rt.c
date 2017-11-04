@@ -1,6 +1,6 @@
-#include "rngs.h"
+#include "../Headers/rngs.h"
 #include <stdio.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 
 int main(int argc, char** argv) {
   if (argc < 3) {
@@ -9,10 +9,10 @@ int main(int argc, char** argv) {
 
   SelectStream(1);
   PutSeed((long)atoi(argv[1]));
-  
+
   int done = 0;
   int c = 1000000000;
-  
+
   while (!done) {
     c = floor(Random() * 1000000000);
     //    if (c % 100000 == 0) {

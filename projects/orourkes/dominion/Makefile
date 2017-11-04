@@ -24,12 +24,67 @@ testAll: dominion.o testSuite.c
 interface.o: interface.h interface.c
 	gcc -c interface.c -g  $(CFLAGS)
 
-runtests: testDrawCard 
+runtests: testDrawCard
 	./testDrawCard &> unittestresult.out
 	gcov dominion.c >> unittestresult.out
 	cat dominion.c.gcov >> unittestresult.out
+myassert.o: myasserts.h myasserts.c
+	gcc -o myasserts myasserts.c -g $(CFLAGS)
 
+run1: interface.o dominion.o myasserts.o unittest1.c
+	gcc -o unittest1 unittest1.c -g  myasserts.o dominion.o rngs.o interface.o $(CFLAGS)
+	
+run2: interface.o dominion.o myasserts.o unittest2.c
+	gcc -o unittest2 unittest2.c -g  myasserts.o dominion.o rngs.o interface.o $(CFLAGS)
 
+run2: interface.o dominion.o myasserts.o unittest2.c
+	gcc -o unittest2 unittest2.c -g  myasserts.o dominion.o rngs.o interface.o $(CFLAGS)
+	
+run3: interface.o dominion.o myasserts.o unittest3.c
+	gcc -o unittest3 unittest3.c -g  myasserts.o dominion.o rngs.o interface.o $(CFLAGS)
+	
+run4: interface.o dominion.o myasserts.o unittest4.c
+	gcc -o unittest4 unittest4.c -g  myasserts.o dominion.o rngs.o interface.o $(CFLAGS)
+	
+run5: interface.o dominion.o myasserts.o cardtest1.c
+	gcc -o cardtest1 cardtest1.c -g  myasserts.o dominion.o rngs.o interface.o $(CFLAGS)
+	
+run6: interface.o dominion.o myasserts.o cardtest2.c
+	gcc -o cardtest2 cardtest2.c -g  myasserts.o dominion.o rngs.o interface.o $(CFLAGS)
+	
+run7: interface.o dominion.o myasserts.o cardtest3.c
+	gcc -o cardtest3 cardtest3.c -g  myasserts.o dominion.o rngs.o interface.o $(CFLAGS)
+	
+run8: interface.o dominion.o myasserts.o cardtest4.c
+	gcc -o cardtest4 cardtest4.c -g  myasserts.o dominion.o rngs.o interface.o $(CFLAGS)
+
+	
+runmytests: run1 run2 run3 run4 run5 run6 run7 run8 dominion.o rngs.o interface.o myasserts.o 
+	./unittest1 &> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	cat dominion.c.gcov >>unittestresults.out
+	./unittest2 &> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	cat dominion.c.gcov >>unittestresults.out
+	./unittest3 &> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	cat dominion.c.gcov >>unittestresults.out
+	./unittest4 &> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	cat dominion.c.gcov >>unittestresults.out
+	./cardtest1 &> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	cat dominion.c.gcov >>unittestresults.out
+	./cardtest2 &> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	cat dominion.c.gcov >>unittestresults.out
+	./cardtest3 &> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	cat dominion.c.gcov >>unittestresults.out
+	./cardtest4 &> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	cat dominion.c.gcov >>unittestresults.out
+	
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 

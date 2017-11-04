@@ -1,6 +1,6 @@
-#include "dominion.h"
+#include "../Headers/dominion.h"
 #include <stdio.h>
-#include "rngs.h"
+#include "../Headers/rngs.h"
 #include <stdlib.h>
 
 int main (int argc, char** argv) {
