@@ -1,9 +1,9 @@
-#include "../Headers/dominion.h"
-#include "../Headers/dominion_helpers.h"
+#include "dominion.h"
+#include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
-#include "../Headers/rngs.h"
+#include "rngs.h"
 
 #define DEBUG 0
 #define NOISY_TEST 1
